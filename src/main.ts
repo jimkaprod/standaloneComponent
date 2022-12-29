@@ -18,5 +18,26 @@
 // in the main.ts file
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
+import { importProvidersFrom, InjectionToken } from '@angular/core';
+import { APP_ROUTES } from './app/app.routes';
+import { RouterModule } from '@angular/router';
 
-bootstrapApplication(AppComponent);
+export interface AppConfig {
+  title: string;
+}
+
+const appConfig: AppConfig = {
+  title: 'jimk@prod',
+};
+
+export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(RouterModule.forRoot(APP_ROUTES)),
+    {
+      provide: APP_CONFIG,
+      useValue: appConfig,
+    },
+  ],
+});

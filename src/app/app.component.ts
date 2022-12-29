@@ -1,4 +1,6 @@
 import { Component, VERSION } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { HelloComponent } from './hello.component';
 import { UserComponent } from './user/user.component';
 
 @Component({
@@ -6,8 +8,8 @@ import { UserComponent } from './user/user.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [UserComponent],
+  imports: [RouterModule, HelloComponent, UserComponent],
 })
 export class AppComponent {
-  name = 'Angular ' + VERSION.major;
+  name = 'AngularRr ' + VERSION.major;
 }
