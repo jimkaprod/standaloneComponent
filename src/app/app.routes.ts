@@ -12,12 +12,13 @@ export const APP_ROUTES: Routes = [
     component: HomeComponent,
   },
   // Option 1: Lazy Loading another Routing Config
-  // {
-  //     path: 'flight-booking',
-  //     loadChildren: () =>
-  //         import('./booking/flight-booking.routes')
-  //             .then(m => m.FLIGHT_BOOKING_ROUTES)
-  // },
+  {
+    path: 'user-details',
+    loadChildren: () =>
+      import('./user-details/user-details.routes').then(
+        (m) => m.USER_DETAILS_ROUTES
+      ),
+  },
 
   // Option 2: Directly Lazy Loading a Standalone Component
   {

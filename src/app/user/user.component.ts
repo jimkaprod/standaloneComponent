@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { AddressComponent } from '../address/address.component';
 
 @Component({
@@ -6,7 +7,7 @@ import { AddressComponent } from '../address/address.component';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
   standalone: true,
-  imports: [AddressComponent],
+  imports: [RouterModule, AddressComponent],
 })
 export class UserComponent implements OnInit {
   constructor() {}
