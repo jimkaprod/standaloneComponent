@@ -21,6 +21,7 @@ import { AppComponent } from './app/app.component';
 import { importProvidersFrom, InjectionToken } from '@angular/core';
 import { APP_ROUTES } from './app/app.routes';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 export interface AppConfig {
   title: string;

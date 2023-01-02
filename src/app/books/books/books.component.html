@@ -1,0 +1,18 @@
+<p>books works!</p>
+<ul>
+  <li
+    *ngFor="
+      let book of books$ | async;
+      trackBy: trackByBookId;
+      index as i;
+      count as count;
+      first as isFirst;
+      last as isLast
+    "
+  >
+    {{ i }}/{{ count }} --> {{ book.cover }} / {{ book.title }} By :
+    <strong>{{ book.authorFirstName }} - {{ book.authorLastName }}</strong>
+    Infos (nbre page: {{ book.pageCount }}, date : {{ book.releaseDate }})
+    <span *ngIf="isFirst">💲</span><span *ngIf="isLast">😢</span>
+  </li>
+</ul>
