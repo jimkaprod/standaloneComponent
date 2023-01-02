@@ -7,12 +7,22 @@
       index as i;
       count as count;
       first as isFirst;
-      last as isLast
+      last as isLast;
+      odd as isOdd;
+      even as isEven
     "
+    [ngStyle]="{ 'background-color': isEven ? 'red' : 'grey' }"
   >
+    <!--     [style.background-color]="isEven ? 'red' : 'grey'" -->
     {{ i }}/{{ count }} --> {{ book.cover }} / {{ book.title }} By :
     <strong>{{ book.authorFirstName }} - {{ book.authorLastName }}</strong>
     Infos (nbre page: {{ book.pageCount }}, date : {{ book.releaseDate }})
     <span *ngIf="isFirst">💲</span><span *ngIf="isLast">😢</span>
+
+    <p>
+      <code *ngFor="let props of book | keyvalue">
+        {{ props.key }} : {{ props.value }}
+      </code>
+    </p>
   </li>
 </ul>

@@ -11,7 +11,7 @@ import { Book, BooksService } from '../books.service';
   imports: [CommonModule],
 })
 export class BooksComponent implements OnInit {
-  books$: Observable<Book[]> = this.booksService.getBooks().pipe(delay(2000));
+  books$: Observable<Book[]> = this.booksService.getBooks().pipe(delay(0.1));
   constructor(private booksService: BooksService) {}
 
   ngOnInit() {}
