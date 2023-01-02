@@ -7,14 +7,7 @@ export const APP_ROUTES: Routes = [
     component: HomeComponent,
   },
   // Option 1: Lazy Loading another Routing Config
-  {
-    path: 'user-details',
-    loadChildren: () =>
-      import('./user-details/user-details.routes').then(
-        (m) => m.USER_DETAILS_ROUTES
-      ),
-  },
-
+  { path: 'user-details', loadChildren: () => import('./user-details/user-details.routes')},
   // Option 2: Directly Lazy Loading a Standalone Component
   {
     path: 'user',

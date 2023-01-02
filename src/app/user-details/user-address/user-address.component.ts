@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import {
+  UserDetailsConfigModel,
+  USER_API_CONFIG,
+} from '../user-details.service';
 
 @Component({
   selector: 'app-user-address',
@@ -7,7 +11,11 @@ import { Component, OnInit } from '@angular/core';
   standalone: true,
 })
 export class UserAddressComponent implements OnInit {
-  constructor() {}
+  constructor(
+    @Inject(USER_API_CONFIG) private userApiConfig: UserDetailsConfigModel
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.userApiConfig);
+  }
 }
