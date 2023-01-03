@@ -1,5 +1,5 @@
 import { Component, VERSION } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { HelloComponent } from './hello.component';
 import { UserComponent } from './user/user.component';
 
@@ -12,4 +12,10 @@ import { UserComponent } from './user/user.component';
 })
 export class AppComponent {
   name = 'AngularRr ' + VERSION.major;
+
+  constructor(private router: Router, readonly route: ActivatedRoute) {}
+
+  goToItems() {
+    this.router.navigate(['user'], { relativeTo: this.route });
+  }
 }

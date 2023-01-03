@@ -1,26 +1,43 @@
-<div
-  class="card"
-  *ngFor="
-    let book of books$ | async;
-    trackBy: trackByBookId;
-    index as i;
-    count as count;
-    first as isFirst;
-    last as isLast;
-    odd as isOdd;
-    even as isEven
-  "
-  [ngStyle]="{ 'background-color': isEven ? 'red' : 'grey' }"
->
-  <!--     [style.background-color]="isEven ? 'red' : 'grey'" -->
-  {{ i }}/{{ count }} --> {{ book.cover }} / {{ book.title }} By :
-  <strong>{{ book.authorFirstName }} - {{ book.authorLastName }}</strong>
-  Infos (nbre page: {{ book.pageCount }}, date : {{ book.releaseDate }})
-  <span *ngIf="isFirst">💲</span><span *ngIf="isLast">😢</span>
+<ng-container
+  *ngIf="books$ | async; then bookContainer; else loadingContainer"
+></ng-container>
 
-  <p>
-    <code *ngFor="let props of book | keyvalue">
-      {{ props.key }} : {{ props.value }}
-    </code>
-  </p>
-</div>
+<ng-template #bookContainer>
+  <div
+    class="card"
+    *ngFor="
+      let book of books$ | async;
+      trackBy: trackByBookId;
+      index as i;
+      count as count;
+      first as isFirst;
+      last as isLast;
+      odd as isOdd;
+      even as isEven
+    "
+    [ngClass]="isEven ? 'text-bg-secondary' : 'text-bg-info'"
+  >
+    <!--     
+      [ngStyle]="{ 'background-color': isEven ? 'red' : 'grey' }"
+      [style.background-color]="isEven ? 'red' : 'grey'" 
+    -->
+    {{ i }}/{{ count }} --> {{ book.cover }} / {{ book.title }} By :
+    <strong>{{ book.authorFirstName }} - {{ book.authorLastName }}</strong>
+    Infos (nbre page: {{ book.pageCount }}, date : {{ book.releaseDate }})
+    <span *ngIf="isFirst">💲</span><span *ngIf="isLast">😢</span>
+
+    <p>
+      <code *ngFor="let props of book | keyvalue">
+        {{ props.key }} : {{ props.value }}
+      </code>
+    </p>
+    <div *ngIf="i === 0; then thenBlockk; else elseBlock"></div>
+    <ng-template #thenBlockk
+      >Content to render when condition is true.</ng-template
+    >
+    <ng-template #elseBlock
+      >Content to render when condition is false.</ng-template
+    >
+  </div>
+</ng-template>
+<ng-template #loadingContainer>LOADING....</ng-template>

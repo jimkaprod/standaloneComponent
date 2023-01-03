@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { PoppupComponent } from '../core/poppup/poppup.component';
 import { UserAddressComponent } from './user-address/user-address.component';
 import { UserDetailsHomeComponent } from './user-details-home/user-details-home.component';
 import { UserDetailsService, USER_API_CONFIG } from './user-details.service';
@@ -22,6 +23,11 @@ export default [
         path: 'phone',
         component: UserPhoneComponent,
       },
+      {
+        path: 'compose',
+        component: PoppupComponent,
+        outlet: 'popup'
+      }
     ],
   },
 ] as Route[];
