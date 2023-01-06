@@ -37,12 +37,12 @@ export default [
       {
         path: 'compose',
         component: ComposeComponent,
-        outlet: 'popup',
+        // outlet: 'popup',
       },
       {
         path: 'message/:id',
         component: PopupMessageComponent,
-        outlet: 'popup',
+        // outlet: 'popup',
       },
     ],
   },
