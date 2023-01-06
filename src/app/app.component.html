@@ -5,6 +5,7 @@
 <button (click)="goToItems()">User Relative to</button>
 <button routerLink="/user-details">User Details</button>
 <button routerLink="/books">Books</button>
+<button routerLink="/mailbox">Mailbox</button>
 <a [routerLink]="['/', { outlets: { popup: ['compose'] } }]">Popup</a>
 ||
 <a
@@ -22,7 +23,5 @@
 <button routerLink="/user-details/phone">Téléphone</button> -->
 <p></p>
 <router-outlet></router-outlet>
-<p>Popup home page:</p>
-<router-outlet name="popup"></router-outlet>
-<p>Personnal Message home page:</p>
+<!-- <router-outlet name="popup"></router-outlet> -->
 <router-outlet name="message"></router-outlet>

@@ -21,6 +21,11 @@ export const APP_ROUTES: Routes = [
     title: 'User Details',
     loadChildren: () => import('./user-details/user-details.routes'),
   },
+  {
+    path: 'mailbox',
+    title: 'Mailbox',
+    loadChildren: () => import('./mailbox/mailbox.routes'),
+  },
   // Option 2: Directly Lazy Loading a Standalone Component
   {
     path: 'user',
