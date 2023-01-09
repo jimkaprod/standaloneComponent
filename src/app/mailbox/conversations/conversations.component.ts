@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 import { ConversationComponent } from '../conversation/conversation.component';
-import { ConversationsResolver } from './conversations.resolver';
 
 @Component({
   selector: 'app-conversations',
@@ -19,7 +18,7 @@ export class ConversationsComponent implements OnInit {
   constructor(route: ActivatedRoute) {
     this.conversations = route.data.pipe(pluck('conversations'));
     route.data.pipe().subscribe((conversation) => {
-      console.log('conversation>>>>>', conversation);
+      console.log('$$conversation>>>>>', conversation);
     });
   }
 

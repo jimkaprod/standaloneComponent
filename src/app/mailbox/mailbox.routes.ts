@@ -15,7 +15,6 @@ export default [
   },
   {
     path: ':folder',
-    providers: [ConversationsResolver],
     children: [
       {
         path: '',

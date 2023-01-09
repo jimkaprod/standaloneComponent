@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
-  ActivatedRouteSnapshot,
+  Router,
   Resolve,
   RouterStateSnapshot,
+  ActivatedRouteSnapshot,
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
@@ -10,7 +11,6 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class ConversationsResolver implements Resolve<string[]> {
-  constructor(private repo: any, private currentUser: any) {}
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
