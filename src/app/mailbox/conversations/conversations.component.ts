@@ -1,8 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  UrlSegment,
+} from '@angular/router';
 import { Observable } from 'rxjs';
-import { pluck } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 import { ConversationComponent } from '../conversation/conversation.component';
 
 @Component({
@@ -16,9 +20,34 @@ export class ConversationsComponent implements OnInit {
   conversations: Observable<string[]>;
 
   constructor(route: ActivatedRoute) {
-    this.conversations = route.data.pipe(pluck('conversations'));
+    this.conversations = route.data.pipe(map((data) => data?.conversation));
     route.data.pipe().subscribe((conversation) => {
-      console.log('$$conversation>>>>>', conversation);
+      console.log('ConversationsComponent$$conversation$$>>>>>', conversation);
+    });
+
+    const s: ActivatedRouteSnapshot = route.snapshot;
+    console.log(
+      'ConversationsComponent$$ActivatedRouteSnapshot$$>>>>>',
+      s.data['conversations']
+    );
+
+    route.url.forEach((u: UrlSegment[]) => {
+      console.log('ConversationsComponent##Segments>>>>', u);
+    });
+
+    route.paramMap.pipe(map((p) => p.get('id'))).subscribe((param) => {
+      console.log('ConversationsComponent$$Params$$>>>>>', param);
+    });
+
+    //?token=123
+    route.queryParamMap.forEach((p) => {
+      const token = p.get('token');
+      console.log('QueryParams>>>', p, token);
+    });
+
+    //#token
+    route.fragment.forEach((f) => {
+      console.log('Fragment>>>', f);
     });
   }
 

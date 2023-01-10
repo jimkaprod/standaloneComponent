@@ -33,9 +33,25 @@
 <a [routerLink]="['/user-details', { outlets: { popup: ['compose'] } }]"
   >Popup in user deails</a
 >
-<!-- <button routerLink="/user-details/address">Addresse</button>
+<p>
+  <code>
+    https://angular-ivy-djdqxe.stackblitz.io/mailbox/inbox/44;id=5/messages/33(popup:compose)
+    https://angular-ivy-djdqxe.stackblitz.io/mailbox/inbox;a=v1/33;b1=v1;b2=v2/messages?token=2233
+    https://angular-ivy-djdqxe.stackblitz.io/mailbox/inbox(popup:compose//message:personnal-message)
+    https://angular-ivy-djdqxe.stackblitz.io/mailbox/inbox/33/(messages/44//popup:compose)
+    https://angular-ivy-djdqxe.stackblitz.io/mailbox/inbox/33/messages/44
+  </code>
+  <!-- <button routerLink="/user-details/address">Addresse</button>
 <button routerLink="/user-details/phone">Téléphone</button> -->
+</p>
+
 <p></p>
 <router-outlet></router-outlet>
-<router-outlet name="popup"></router-outlet>
-<!-- <router-outlet name="message"></router-outlet> -->
+<p>
+  popupOutlet
+  <router-outlet name="popup"></router-outlet>
+</p>
+<p>
+  MessageOutlet
+  <router-outlet name="message"></router-outlet>
+</p>

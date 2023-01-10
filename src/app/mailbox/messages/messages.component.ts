@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 
 @Component({
   selector: 'app-messages',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
   standalone: true,
 })
 export class MessagesComponent implements OnInit {
-  constructor() {}
+  constructor(route: ActivatedRoute) {
+    route.url.forEach((u: UrlSegment[]) => {
+      console.log('ConversationsComponent##Segments>>>>', u);
+    });
+  }
 
   ngOnInit() {}
 }

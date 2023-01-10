@@ -3,6 +3,7 @@ import { BooksService } from './books/books.service';
 import { PersonnalMessageComponent } from './core/message/personnal-message.component';
 import { PoppupComponent } from './core/poppup/poppup.component';
 import { HomeComponent } from './home/home.component';
+import { ComposeComponent } from './mailbox/compose/compose.component';
 
 export const APP_ROUTES: Routes = [
   {
@@ -41,21 +42,21 @@ export const APP_ROUTES: Routes = [
     providers: [BooksService],
   },
   {
+    path: 'compose',
+    component: ComposeComponent,
+    outlet: 'popup',
+  },
+  {
+    path: 'message/:id',
+    component: PersonnalMessageComponent,
+    outlet: 'message',
+  },
+  {
     path: '**',
     title: 'You are lost man!',
     loadComponent: () =>
       import('./core/page-not-found/page-not-found.component').then(
         (m) => m.PageNotFoundComponent
       ),
-  },
-  {
-    path: 'compose',
-    component: PoppupComponent,
-    outlet: 'popup',
-  },
-  {
-    path: 'personnal-message',
-    component: PersonnalMessageComponent,
-    outlet: 'message',
   },
 ];

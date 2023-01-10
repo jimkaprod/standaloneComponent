@@ -23,11 +23,11 @@ export default [
         path: 'phone',
         component: UserPhoneComponent,
       },
-      {
-        path: 'compose',
-        component: PoppupComponent,
-        outlet: 'popup'
-      }
+      // {
+      //   path: 'compose',
+      //   component: PoppupComponent,
+      //   outlet: 'popup'
+      // }
     ],
   },
 ] as Route[];

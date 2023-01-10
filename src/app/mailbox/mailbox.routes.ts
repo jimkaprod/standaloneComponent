@@ -6,6 +6,8 @@ import { MessageComponent } from './message/message.component';
 import { MessagesComponent } from './messages/messages.component';
 import { PopupMessageComponent } from './popup-message/popup-message.component';
 import { ConversationsResolver } from './conversations/conversations.resolver';
+import { MessageListComponent } from './message-list/message-list.component';
+import { MessageDetailsComponent } from './message-details/message-details.component';
 
 export default [
   {
@@ -27,20 +29,26 @@ export default [
         path: ':id',
         component: ConversationComponent,
         children: [
-          { path: 'messages', component: MessagesComponent },
-          { path: 'messages/:id', component: MessageComponent },
+          {
+            path: 'messages',
+            component: MessagesComponent,
+          },
+          {
+            path: 'messages/:id',
+            children: [
+              {
+                path: '',
+                component: MessageListComponent,
+              },
+              {
+                path: '',
+                component: MessageDetailsComponent,
+                outlet: 'details',
+              },
+            ],
+          },
         ],
       },
     ],
-  },
-  {
-    path: 'compose',
-    component: ComposeComponent,
-    outlet: 'popup',
-  },
-  {
-    path: 'message/:id',
-    component: PopupMessageComponent,
-    outlet: 'popup',
   },
 ] as Route[];
