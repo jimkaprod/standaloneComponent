@@ -20,6 +20,13 @@
 <button [routerLink]="['/mailbox/inbox/44/messages/33(popup:compose)']">
   Mailbox2
 </button>
+<button
+  [routerLink]="[
+    { outlets: { primary: 'mailbox/inbox/33/messages/44', popup: 'compose' } }
+  ]"
+>
+  Mailbox3
+</button>
 <a [routerLink]="['/', { outlets: { popup: ['compose'] } }]">Popup</a>
 ||
 <a

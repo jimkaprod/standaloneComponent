@@ -27,6 +27,10 @@ export class ConversationsComponent implements OnInit {
 
     const s: ActivatedRouteSnapshot = route.snapshot;
     console.log(
+      'ConversationsComponent000$$ActivatedRouteSnapshot$$>>>>>',
+      s.data
+    );
+    console.log(
       'ConversationsComponent$$ActivatedRouteSnapshot$$>>>>>',
       s.data['conversations']
     );
